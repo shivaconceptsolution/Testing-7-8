@@ -1,0 +1,96 @@
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| collegedb          |
+| collegeerp         |
+| ierp               |
+| information_schema |
+| markstest          |
+| mydb               |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| practicedb         |
+| school             |
+| schooldb           |
+| scsdigital         |
+| test               |
+| testdb             |
+| xyz                |
++--------------------+
+16 rows in set (0.004 sec)
+
+MariaDB [(none)]> use scsdigital;
+Database changed
+MariaDB [scsdigital]> show tables;
++----------------------+
+| Tables_in_scsdigital |
++----------------------+
+| student              |
++----------------------+
+1 row in set (0.001 sec)
+
+MariaDB [scsdigital]> desc student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| rno    | int(11)     | YES  |     | NULL    |       |
+| sname  | varchar(50) | YES  |     | NULL    |       |
+| branch | varchar(50) | YES  |     | NULL    |       |
+| fees   | int(11)     | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.004 sec)
+
+MariaDB [scsdigital]> select * from student;
+Empty set (0.001 sec)
+
+MariaDB [scsdigital]> insert into student(rno,sname,branch,fees) values(101,'nitin kumar','CS',450000);
+Query OK, 1 row affected (0.044 sec)
+
+MariaDB [scsdigital]> insert into student(rno,sname,branch,fees) values(102,'jay kumar','CS',450000);
+Query OK, 1 row affected (0.074 sec)
+
+MariaDB [scsdigital]> select * from stu;
+ERROR 1146 (42S02): Table 'scsdigital.stu' doesn't exist
+MariaDB [scsdigital]> select * from student;
++------+-------------+--------+--------+
+| rno  | sname       | branch | fees   |
++------+-------------+--------+--------+
+|  101 | nitin kumar | CS     | 450000 |
+|  102 | jay kumar   | CS     | 450000 |
++------+-------------+--------+--------+
+2 rows in set (0.001 sec)
+
+MariaDB [scsdigital]> update student set branch='IT' where rno=101;
+Query OK, 1 row affected (0.087 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [scsdigital]> insert into student(rno,sname,branch,fees) values(dddd,'jay kumar','CS',450000);
+ERROR 1054 (42S22): Unknown column 'dddd' in 'field list'
+MariaDB [scsdigital]> insert into student(rno,sname,branch,fees) values('dddd','jay kumar','CS',450000);
+Query OK, 1 row affected, 1 warning (0.079 sec)
+
+MariaDB [scsdigital]> select * from student;
++------+-------------+--------+--------+
+| rno  | sname       | branch | fees   |
++------+-------------+--------+--------+
+|  101 | nitin kumar | IT     | 450000 |
+|  102 | jay kumar   | CS     | 450000 |
+|    0 | jay kumar   | CS     | 450000 |
++------+-------------+--------+--------+
+3 rows in set (0.001 sec)
+
+MariaDB [scsdigital]> delete from student where rno=0;
+Query OK, 1 row affected (0.087 sec)
+
+MariaDB [scsdigital]> select * from student;
++------+-------------+--------+--------+
+| rno  | sname       | branch | fees   |
++------+-------------+--------+--------+
+|  101 | nitin kumar | IT     | 450000 |
+|  102 | jay kumar   | CS     | 450000 |
++------+-------------+--------+--------+
+2 rows in set (0.001 sec)
+
+MariaDB [scsdigital]> notee
