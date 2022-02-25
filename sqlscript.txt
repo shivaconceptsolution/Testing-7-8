@@ -1,0 +1,60 @@
+MariaDB [roomrent]> create database roomrent1;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [roomrent]> use roomrent1;
+Database changed
+MariaDB [roomrent1]> create table category(catid int,catname varchar(50));
+Query OK, 0 rows affected (0.192 sec)
+
+MariaDB [roomrent1]> insert into category(catid,catname) values(1,'Room');
+Query OK, 1 row affected (0.062 sec)
+
+MariaDB [roomrent1]> insert into category(catid,catname) values(2,'Flat');
+Query OK, 1 row affected (0.075 sec)
+
+MariaDB [roomrent1]> insert into category(catid,catname) values(3,'Hostel');
+Query OK, 1 row affected (0.048 sec)
+
+MariaDB [roomrent1]> insert into category(catid,catname) values(4,'PG');
+Query OK, 1 row affected (0.090 sec)
+
+MariaDB [roomrent1]> select * from category;
++-------+---------+
+| catid | catname |
++-------+---------+
+|     1 | Room    |
+|     2 | Flat    |
+|     3 | Hostel  |
+|     4 | PG      |
++-------+---------+
+4 rows in set (0.000 sec)
+
+MariaDB [roomrent1]> update category set catname='singleroom' where catid=1;
+Query OK, 1 row affected (0.094 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [roomrent1]> select * from category;
++-------+------------+
+| catid | catname    |
++-------+------------+
+|     1 | singleroom |
+|     2 | Flat       |
+|     3 | Hostel     |
+|     4 | PG         |
++-------+------------+
+4 rows in set (0.000 sec)
+
+MariaDB [roomrent1]> delete from category where catid=1;
+Query OK, 1 row affected (0.064 sec)
+
+MariaDB [roomrent1]> select * from category;
++-------+---------+
+| catid | catname |
++-------+---------+
+|     2 | Flat    |
+|     3 | Hostel  |
+|     4 | PG      |
++-------+---------+
+3 rows in set (0.000 sec)
+
+MariaDB [roomrent1]> notee
